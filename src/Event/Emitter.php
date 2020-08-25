@@ -1,18 +1,29 @@
 <?php
+/**
+ * @package Neuron\Event
+ *
+ */
 
 namespace Neuron\Event;
 
+/**
+ * Class Emitter
+ */
 class Emitter
 {
-	private array $_Events;
 	private array $_Broadcasters;
 
-	public function addEvent()
-	{}
+	/**
+	 * @return array
+	 */
+	public function getBroadcasters(): array
+	{
+		return $this->_Broadcasters;
+	}
 
-	public function removeEvent()
-	{}
-
+	/**
+	 * @param $Event
+	 */
 	public function emit( $Event )
 	{
 		foreach( $this->_Broadcasters as $Broadcaster )
@@ -21,6 +32,9 @@ class Emitter
 		}
 	}
 
+	/**
+	 * @param IBroadcaster $Broadcaster
+	 */
 	public function registerBroadcaster( IBroadcaster $Broadcaster )
 	{
 		$this->_Broadcasters[] = $Broadcaster;
