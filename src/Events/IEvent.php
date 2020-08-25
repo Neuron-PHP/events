@@ -1,6 +1,6 @@
 <?php
 
-namespace Neuron\Event;
+namespace Neuron\Events;
 
 interface IEvent
 {

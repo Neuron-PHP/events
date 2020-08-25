@@ -1,4 +1,5 @@
 ## 0.5.4
+* Refactored broadcasters and adder Log broadcaster.
 
 ## 0.5.3
 * Added getBroadcasters to Emitter.

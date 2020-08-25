@@ -1,7 +1,8 @@
 <?php
 
-namespace Neuron\Event;
+namespace Neuron\Events;
 
+use Neuron\Events\Broadcasters\Generic;
 use PHPUnit\Framework\TestCase;
 
 class EventTest implements IEvent
@@ -24,7 +25,7 @@ class GenericBroadcasterTest extends TestCase
 	public function testBroadcaster()
 	{
 		$Emitter     = new Emitter();
-		$Broadcaster = new GenericBroadcaster();
+		$Broadcaster = new Generic();
 		$Listener    = new ListenerTest();
 		$Event       = new EventTest();
 
