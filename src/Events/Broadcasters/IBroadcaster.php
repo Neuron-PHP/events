@@ -1,6 +1,8 @@
 <?php
 
-namespace Neuron\Event;
+namespace Neuron\Events\Broadcasters;
+
+use Neuron\Events\IListener;
 
 interface IBroadcaster
 {

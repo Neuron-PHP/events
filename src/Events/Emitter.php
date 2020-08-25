@@ -4,7 +4,9 @@
  *
  */
 
-namespace Neuron\Event;
+namespace Neuron\Events;
+
+use Neuron\Events\Broadcasters\IBroadcaster;
 
 /**
  * Class Emitter

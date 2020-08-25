@@ -1,8 +1,11 @@
 <?php
 
-namespace Neuron\Event;
+namespace Neuron\Events\Broadcasters;
 
-class GenericBroadcaster implements IBroadcaster
+use Neuron\Events\Broadcasters\IBroadcaster;
+use Neuron\Events\IListener;
+
+class Generic implements IBroadcaster
 {
 	private array $_Listeners;
 
