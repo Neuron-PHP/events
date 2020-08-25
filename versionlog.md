@@ -1,4 +1,5 @@
 ## 0.5.3
+* Added getBroadcasters to Emitter.
 
 ## 0.5.2 2020-08-25
 
