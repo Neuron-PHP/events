@@ -1,6 +1,6 @@
 {
-    "name": "neuron-php/util",
-    "description": "Miscellaneous utility classes.",
+    "name": "neuron-php/events",
+    "description": "Event mechanism.",
     "type": "library",
     "license": "MIT",
     "authors": [
