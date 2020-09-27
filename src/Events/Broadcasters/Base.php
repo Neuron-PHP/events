@@ -6,7 +6,7 @@ use Neuron\Events\IListener;
 
 abstract class Base implements IBroadcaster
 {
-	protected array $_Listeners;
+	protected array $_Listeners = [];
 
 	/**
 	 * @param string $EventName
