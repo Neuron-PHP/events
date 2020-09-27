@@ -1,4 +1,5 @@
 ## 0.5.5
+* Fixed "Uncaught Error" in the Generic class.
 
 ## 0.5.4
 * Refactored broadcasters and adder Log broadcaster.
