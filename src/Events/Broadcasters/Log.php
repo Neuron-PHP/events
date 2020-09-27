@@ -3,6 +3,7 @@
  * @package Neuron\Events\Broadcasters
  *
  */
+
 namespace Neuron\Events\Broadcasters;
 
 use Neuron\Events\IListener;
@@ -11,7 +12,7 @@ use Neuron\Log\ILogger;
 /**
  * Class Log
  */
-class Log implements IBroadcaster
+class Log extends Base
 {
 	private array   $_Listeners;
 	private ILogger $_Logger;
