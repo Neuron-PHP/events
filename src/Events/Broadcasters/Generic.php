@@ -7,7 +7,10 @@ use Neuron\Events\IListener;
 
 class Generic implements IBroadcaster
 {
-	private array $_Listeners;
+	/**
+	 * @var array
+	 */
+	private array $_Listeners = [];
 
 	/**
 	 * @param $Event
