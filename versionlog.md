@@ -1,4 +1,5 @@
 ## 0.5.7
+* Updated logger requirement to 0.6.*
 
 ## 0.5.6 2022-03-30
 * General refactoring.
