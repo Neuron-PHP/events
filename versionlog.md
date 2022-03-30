@@ -1,3 +1,5 @@
+## 0.5.8
+
 ## 0.5.7
 * Updated logger requirement to 0.6.*
 
