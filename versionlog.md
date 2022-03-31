@@ -1,4 +1,7 @@
-## 0.5.7
+## 0.5.8 2022-03-31
+* registered listeners can now be class names or objects.
+
+## 0.5.7 2022-03-30
 * Updated logger requirement to 0.6.*
 
 ## 0.5.6 2022-03-30

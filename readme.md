@@ -4,7 +4,10 @@
 
 ### Broadcasters
 
-Generic
+#### Generic
+Broadcasts events directly in memory.
 
-Log
+#### Log
+Writes all event activity to a specific log destination.
+
 
