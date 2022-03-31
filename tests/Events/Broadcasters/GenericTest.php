@@ -11,16 +11,14 @@ use PHPUnit\Framework\TestCase;
 
 class EventTest implements IEvent
 {
-	public int $State = 1;
+	public int $State = 0;
 }
 
 class ListenerTest implements IListener
 {
-	public int $State = 0;
-
 	public function event( $Event )
 	{
-		$this->State = $Event->State;
+		$Event->State = 1;
 	}
 }
 
@@ -41,20 +39,15 @@ class GenericTest extends TestCase
 
 		$this->assertEquals(
 			1,
-			$Listener->State
+			$Event->State
 		);
 	}
 
 	public function testBroadcasterWithClass()
 	{
-		$Memory      = new Memory( new Raw() );
-		$Logger      = new Logger( $Memory );
-		$Broadcaster = new Log( $Logger );
-
+		$Broadcaster = new Generic();
 		$Emitter     = new Emitter();
 		$Event       = new EventTest();
-
-		$Logger->setRunLevel( 'debug' );
 
 		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
 
@@ -63,8 +56,8 @@ class GenericTest extends TestCase
 		$Emitter->emit( $Event );
 
 		$this->assertEquals(
-			"Neuron\Events\EventTest\n",
-			$Memory->getData()
+			1,
+			$Event->State
 		);
 	}
 }

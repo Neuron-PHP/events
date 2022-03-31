@@ -18,6 +18,11 @@ class Generic extends Base
 			{
 				foreach( $Listeners as $Listener )
 				{
+					if( is_string( $Listener ) )
+					{
+						$Listener = new $Listener();
+					}
+
 					$Listener->event( $Event );
 				}
 			}
