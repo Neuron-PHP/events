@@ -10,7 +10,7 @@ class Generic extends Base
 	/**
 	 * @param $Event
 	 */
-	public function broadcast( $Event )
+	public function broadcast( $Event ) : void
 	{
 		foreach( $this->_Listeners as $EventName => $Listeners )
 		{
@@ -23,5 +23,4 @@ class Generic extends Base
 			}
 		}
 	}
-
 }

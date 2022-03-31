@@ -14,7 +14,6 @@ use Neuron\Log\ILogger;
  */
 class Log extends Base
 {
-	private array   $_Listeners;
 	private ILogger $_Logger;
 
 	function __construct( ILogger $Logger )
@@ -24,9 +23,9 @@ class Log extends Base
 
 	/**
 	 * @param string $EventName
-	 * @param IListener $Listener
+	 * @param mixed $Listener
 	 */
-	public function addListener( string $EventName, IListener $Listener )
+	public function addListener( string $EventName, mixed $Listener ) : void
 	{
 		$this->_Listeners[ $EventName ][] = $Listener;
 	}
@@ -35,7 +34,7 @@ class Log extends Base
 	 * @param $Event
 	 * @return mixed
 	 */
-	public function broadcast( $Event )
+	public function broadcast( $Event ) : void
 	{
 		$this->_Logger->info( get_class( $Event ) );
 	}

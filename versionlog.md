@@ -1,4 +1,5 @@
 ## 0.5.8
+* registered listeners can now be class names or objects.
 
 ## 0.5.7
 * Updated logger requirement to 0.6.*
