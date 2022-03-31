@@ -1,3 +1,5 @@
+## 0.5.10
+
 ## 0.5.9 2022-03-31
 * Fixed a regression caused by phpstorm losing changes. :(
 * 
