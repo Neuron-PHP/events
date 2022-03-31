@@ -1,3 +1,5 @@
+## 0.5.9
+
 ## 0.5.8 2022-03-31
 * registered listeners can now be class names or objects.
 
