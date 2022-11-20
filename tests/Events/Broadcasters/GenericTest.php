@@ -31,9 +31,9 @@ class GenericTest extends TestCase
 		$Listener    = new ListenerTest();
 		$Event       = new EventTest();
 
-		$Broadcaster->addListener( EventTest::class, $Listener );
-
 		$Emitter->registerBroadcaster( $Broadcaster );
+
+		$Broadcaster->addListener( EventTest::class, $Listener );
 
 		$Emitter->emit( $Event );
 
@@ -52,6 +52,25 @@ class GenericTest extends TestCase
 		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
 
 		$Emitter->registerBroadcaster( $Broadcaster );
+
+		$Emitter->emit( $Event );
+
+		$this->assertEquals(
+			1,
+			$Event->State
+		);
+	}
+
+	public function testRegisterWithEmitter()
+	{
+		$Emitter     = new Emitter();
+		$Broadcaster = new Generic();
+		$Listener    = new ListenerTest();
+		$Event       = new EventTest();
+
+		$Emitter->registerBroadcaster( $Broadcaster );
+
+		$Emitter->addListener( EventTest::class, $Listener );
 
 		$Emitter->emit( $Event );
 

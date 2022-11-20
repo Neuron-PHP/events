@@ -46,4 +46,19 @@ class Emitter
 	{
 		$this->_Broadcasters[] = $Broadcaster;
 	}
+
+	/**
+	 * Registers an event with all broadcasters.
+	 *
+	 * @param string $EventName
+	 * @param IListener $Listener
+	 * @return void
+	 */
+	public function addListener( string $EventName, IListener $Listener ) : void
+	{
+		foreach( $this->_Broadcasters as $Broadcaster )
+		{
+			$Broadcaster->addListener( $EventName, $Listener );
+		}
+	}
 }
