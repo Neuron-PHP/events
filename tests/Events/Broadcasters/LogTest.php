@@ -2,11 +2,9 @@
 
 namespace Events\Broadcasters;
 
-use Neuron\Events\Broadcasters\Generic;
 use Neuron\Events\Broadcasters\Log;
 use Neuron\Events\Emitter;
 use Neuron\Events\EventTest;
-use Neuron\Events\ListenerTest;
 use Neuron\Log\Destination\Memory;
 use Neuron\Log\Format\Raw;
 use Neuron\Log\Logger;

@@ -5,9 +5,13 @@
  */
 namespace Neuron\Events\Broadcasters;
 
+/**
+ * Generic broadcaster that dispatches events inline.
+ */
 class Generic extends Base
 {
 	/**
+	 * Broadcasts an event to all listeners registered to the event class.
 	 * @param $Event
 	 */
 	public function broadcast( $Event ) : void

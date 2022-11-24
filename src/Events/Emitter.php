@@ -1,22 +1,23 @@
 <?php
-/**
- * @package Neuron\Event
- *
- */
-
 namespace Neuron\Events;
 
+use Neuron\Events\Broadcasters\Generic;
 use Neuron\Events\Broadcasters\IBroadcaster;
 
 /**
- * Class Emitter
+ * This class manages the emission of events to broadcasters.
+ *
+ * @see Generic Generic broadcaster.
+ *
  */
 class Emitter
 {
 	private array $_Broadcasters;
 
 	/**
-	 * @return array
+	 * Returns a list of all registered broadcasters.
+	 *
+	 * @return array Array of broadcasters.
 	 */
 	public function getBroadcasters(): array
 	{
@@ -24,6 +25,8 @@ class Emitter
 	}
 
 	/**
+	 * Emits an event across all registered broadcasters.
+	 *
 	 * @param $Event
 	 */
 	public function emit( $Event )
@@ -35,10 +38,27 @@ class Emitter
 	}
 
 	/**
+	 * Registers a broadcaster to emit events to.
+	 *
 	 * @param IBroadcaster $Broadcaster
 	 */
 	public function registerBroadcaster( IBroadcaster $Broadcaster )
 	{
 		$this->_Broadcasters[] = $Broadcaster;
+	}
+
+	/**
+	 * Registers an event with all broadcasters.
+	 *
+	 * @param string $EventName
+	 * @param IListener $Listener
+	 * @return void
+	 */
+	public function addListener( string $EventName, IListener $Listener ) : void
+	{
+		foreach( $this->_Broadcasters as $Broadcaster )
+		{
+			$Broadcaster->addListener( $EventName, $Listener );
+		}
 	}
 }

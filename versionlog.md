@@ -1,6 +1,10 @@
+## 0.5.10 2022-11-23
+* Updated documentation.
+* Added addListener() to emitter.
+
 ## 0.5.9 2022-03-31
 * Fixed a regression caused by phpstorm losing changes. :(
-* 
+
 ## 0.5.8 2022-03-31
 * registered listeners can now be class names or objects.
 
