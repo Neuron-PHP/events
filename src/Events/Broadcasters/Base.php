@@ -14,7 +14,7 @@ abstract class Base implements IBroadcaster
 	/**
 	 * Maps a listener class nome or object to an event name.
 	 * @param string $EventName
-	 * @param mixed IListener|string $Listener
+	 * @param mixed $Listener IListener|string $Listener
 	 */
 	public function addListener( string $EventName, mixed $Listener ) : void
 	{
