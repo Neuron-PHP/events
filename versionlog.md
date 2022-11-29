@@ -1,3 +1,8 @@
+## 0.6.0 2022-11-29
+* Dependency update
+
+## 0.5.11
+
 ## 0.5.10 2022-11-23
 * Updated documentation.
 * Added addListener() to emitter.
