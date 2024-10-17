@@ -1,4 +1,5 @@
 ## 0.6.2
+* Updated to logger 0.7
 
 ## 0.6.1
 
