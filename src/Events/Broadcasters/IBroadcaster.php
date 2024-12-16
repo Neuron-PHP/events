@@ -5,10 +5,10 @@ namespace Neuron\Events\Broadcasters;
 use Neuron\Events\IListener;
 
 /**
- * Interface for broadcasters.
+ * Register listeners and broadcast events to them.
  */
 interface IBroadcaster
 {
-	public function addListener( string $EventName, IListener $Listener ) : void;
+	public function addListener( string $EventName, IListener $Listener ) : bool;
 	public function broadcast( $Event ) : void;
 }

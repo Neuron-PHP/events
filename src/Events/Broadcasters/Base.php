@@ -16,9 +16,18 @@ abstract class Base implements IBroadcaster
 	 * @param string $EventName
 	 * @param mixed $Listener IListener|string $Listener
 	 */
-	public function addListener( string $EventName, mixed $Listener ) : void
+	public function addListener( string $EventName, mixed $Listener ) : bool
 	{
+		foreach( $this->_Listeners as $Event => $Listeners )
+		{
+			if( $Event == $EventName )
+			{
+				return false;
+			}
+		}
+
 		$this->_Listeners[ $EventName ][] = $Listener;
+		return true;
 	}
 
 	abstract public function broadcast( $Event ) : void;
