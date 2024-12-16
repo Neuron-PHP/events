@@ -1,3 +1,5 @@
+## 0.6.4
+
 ## 0.6.3
 * Updated the IBroadcaster interface.
 * No longer registers duplicate events.
