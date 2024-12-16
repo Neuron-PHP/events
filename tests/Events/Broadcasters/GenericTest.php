@@ -1,26 +1,12 @@
 <?php
 
-namespace Neuron\Events;
+namespace Tests\Events\Broadcasters;
 
 use Neuron\Events\Broadcasters\Generic;
-use Neuron\Events\Broadcasters\Log;
-use Neuron\Log\Destination\Memory;
-use Neuron\Log\Format\Raw;
-use Neuron\Log\Logger;
+use Neuron\Events\Emitter;
 use PHPUnit\Framework\TestCase;
-
-class EventTest implements IEvent
-{
-	public int $State = 0;
-}
-
-class ListenerTest implements IListener
-{
-	public function event( $Event )
-	{
-		$Event->State = 1;
-	}
-}
+use Tests\EventTest;
+use Tests\ListenerTest;
 
 class GenericTest extends TestCase
 {
@@ -71,6 +57,44 @@ class GenericTest extends TestCase
 		$Emitter->registerBroadcaster( $Broadcaster );
 
 		$Emitter->addListener( EventTest::class, $Listener );
+
+		$Emitter->emit( $Event );
+
+		$this->assertEquals(
+			1,
+			$Event->State
+		);
+	}
+
+	public function testDuplicateBroadcasters()
+	{
+		$Broadcaster = new Generic();
+		$Emitter     = new Emitter();
+		$Event       = new EventTest();
+
+		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
+
+		$Emitter->registerBroadcaster( $Broadcaster );
+		$Emitter->registerBroadcaster( $Broadcaster );
+
+		$Emitter->emit( $Event );
+
+		$this->assertEquals(
+			1,
+			$Event->State
+		);
+	}
+
+	public function testDuplicateListeners()
+	{
+		$Broadcaster = new Generic();
+		$Emitter     = new Emitter();
+		$Event       = new EventTest();
+
+		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
+		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
+
+		$Emitter->registerBroadcaster( $Broadcaster );
 
 		$Emitter->emit( $Event );
 

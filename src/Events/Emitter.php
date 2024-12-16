@@ -12,7 +12,7 @@ use Neuron\Events\Broadcasters\IBroadcaster;
  */
 class Emitter
 {
-	private array $_Broadcasters;
+	private array $_Broadcasters = [];
 
 	/**
 	 * Returns a list of all registered broadcasters.
@@ -42,9 +42,18 @@ class Emitter
 	 *
 	 * @param IBroadcaster $Broadcaster
 	 */
-	public function registerBroadcaster( IBroadcaster $Broadcaster )
+	public function registerBroadcaster( IBroadcaster $Broadcaster ) : bool
 	{
+		foreach( $this->_Broadcasters as $Broadcaster)
+		{
+			if( $Broadcaster === $Broadcaster )
+			{
+				return false;
+			}
+		}
+
 		$this->_Broadcasters[] = $Broadcaster;
+		return true;
 	}
 
 	/**
@@ -52,13 +61,19 @@ class Emitter
 	 *
 	 * @param string $EventName
 	 * @param IListener $Listener
-	 * @return void
+	 * @return bool
 	 */
-	public function addListener( string $EventName, IListener $Listener ) : void
+	public function addListener( string $EventName, IListener $Listener ) : bool
 	{
+		$Result = true;
 		foreach( $this->_Broadcasters as $Broadcaster )
 		{
-			$Broadcaster->addListener( $EventName, $Listener );
+			if( $Broadcaster->addListener( $EventName, $Listener ) === false )
+			{
+				$Result = false;
+			}
 		}
+
+		return $Result;
 	}
 }
