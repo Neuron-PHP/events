@@ -1,6 +1,8 @@
 ## 0.6.4
+* Resolved an issue with duplicate broadcasters.
+* Cleaned up tests.
 
-## 0.6.3
+## 0.6.3 2024-12-16
 * Updated the IBroadcaster interface.
 * No longer registers duplicate events.
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Events\Broadcasters;
+namespace Tests\Events\Broadcasters;
 
 use Neuron\Events\Broadcasters\Log;
 use Neuron\Events\Emitter;
@@ -21,7 +21,7 @@ class LogTest extends TestCase
 		$Logger      = new Logger( $Memory );
 		$Broadcaster = new Log( $Logger );
 		$Emitter     = new Emitter();
-		$Event       = new EventTest();
+		$Event       = new \Tests\EventTest();
 
 		$Logger->setRunLevel( 'debug' );
 		$Emitter->registerBroadcaster( $Broadcaster );
@@ -29,7 +29,7 @@ class LogTest extends TestCase
 		$Emitter->emit( $Event );
 
 		$this->assertEquals(
-			"Neuron\Events\EventTest\n",
+			"Tests\EventTest\n",
 			$Memory->getData()
 		);
 	}

@@ -18,12 +18,9 @@ abstract class Base implements IBroadcaster
 	 */
 	public function addListener( string $EventName, mixed $Listener ) : bool
 	{
-		foreach( $this->_Listeners as $Event => $Listeners )
+		if( array_key_exists( $EventName, $this->_Listeners ) )
 		{
-			if( $Event == $EventName )
-			{
-				return false;
-			}
+			return false;
 		}
 
 		$this->_Listeners[ $EventName ][] = $Listener;
