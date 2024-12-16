@@ -24,21 +24,10 @@ class Log extends Base
 	}
 
 	/**
-	 * Maps a listener classname or object to an event name.
-	 *
-	 * @param string $EventName
-	 * @param mixed $Listener
-	 */
-	public function addListener( string $EventName, mixed $Listener ) : void
-	{
-		$this->_Listeners[ $EventName ][] = $Listener;
-	}
-
-	/**
 	 * Writes the name of the broadcast event to the configured log.
 	 *
 	 * @param $Event
-	 * @return mixed
+	 * @return void
 	 */
 	public function broadcast( $Event ) : void
 	{

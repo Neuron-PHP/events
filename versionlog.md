@@ -1,3 +1,7 @@
+## 0.6.3
+* Updated the IBroadcaster interface.
+* No longer registers duplicate events.
+
 ## 0.6.2 2024-10-16
 * Updated to logger 0.7
 

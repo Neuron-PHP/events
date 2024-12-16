@@ -5,7 +5,7 @@ use Neuron\Events\Broadcasters\Generic;
 use Neuron\Events\Broadcasters\IBroadcaster;
 
 /**
- * This class manages the emission of events to broadcasters.
+ * Manages the emission of events to broadcasters.
  *
  * @see Generic Generic broadcaster.
  *

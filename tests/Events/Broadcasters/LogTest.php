@@ -12,6 +12,9 @@ use PHPUnit\Framework\TestCase;
 
 class LogTest extends TestCase
 {
+	/**
+	 * @throws \Exception
+	 */
 	public function testBroadcaster()
 	{
 		$Memory      = new Memory( new Raw() );
