@@ -1,8 +1,6 @@
--e ## 0.6.8
-
+## 0.6.8
 ## 0.6.7
 ## 0.6.6
-
 ## 0.6.5 2024-12-16
 ## 0.6.4
 * Resolved an issue with duplicate broadcasters.
