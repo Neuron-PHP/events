@@ -1,4 +1,5 @@
-## 0.6.8
+## 0.6.9
+
 
 ## 0.6.8
 * Updated tests to 100% coverage.
