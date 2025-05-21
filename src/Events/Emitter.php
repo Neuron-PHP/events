@@ -65,6 +65,11 @@ class Emitter
 	 */
 	public function addListener( string $EventName, IListener $Listener ) : bool
 	{
+		if( !count( $this->_Broadcasters ) )
+		{
+			return false;
+		}
+
 		$Result = true;
 		foreach( $this->_Broadcasters as $Broadcaster )
 		{
