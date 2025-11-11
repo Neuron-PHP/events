@@ -2,6 +2,7 @@
 
 namespace Neuron\Events\Broadcasters;
 
+use Neuron\Events\IEvent;
 use Neuron\Events\IListener;
 
 /**
@@ -10,5 +11,5 @@ use Neuron\Events\IListener;
 interface IBroadcaster
 {
 	public function addListener( string $EventName, IListener $Listener ) : bool;
-	public function broadcast( $Event ) : void;
+	public function broadcast( IEvent $Event ) : void;
 }

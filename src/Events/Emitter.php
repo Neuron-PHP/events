@@ -64,7 +64,7 @@ class Emitter
 	 *
 	 * @param $Event
 	 */
-	public function emit( $Event )
+	public function emit( $Event ): void
 	{
 		foreach( $this->_Broadcasters as $Broadcaster )
 		{
@@ -75,19 +75,20 @@ class Emitter
 	/**
 	 * Registers a broadcaster to emit events to.
 	 *
-	 * @param IBroadcaster $Broadcaster
+	 * @param IBroadcaster $NewBroadcaster
+	 * @return bool
 	 */
-	public function registerBroadcaster( IBroadcaster $Broadcaster ) : bool
+	public function registerBroadcaster( IBroadcaster $NewBroadcaster ) : bool
 	{
 		foreach( $this->_Broadcasters as $Broadcaster)
 		{
-			if( $Broadcaster === $Broadcaster )
+			if( $Broadcaster === $NewBroadcaster )
 			{
 				return false;
 			}
 		}
 
-		$this->_Broadcasters[] = $Broadcaster;
+		$this->_Broadcasters[] = $NewBroadcaster;
 		return true;
 	}
 

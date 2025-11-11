@@ -5,6 +5,8 @@
  */
 namespace Neuron\Events\Broadcasters;
 
+use Neuron\Events\IEvent;
+
 /**
  * Generic broadcaster that dispatches events inline.
  */
@@ -12,9 +14,9 @@ class Generic extends Base
 {
 	/**
 	 * Broadcasts an event to all listeners registered to the event class.
-	 * @param $Event
+	 * @param IEvent $Event
 	 */
-	public function broadcast( $Event ) : void
+	public function broadcast( IEvent $Event ) : void
 	{
 		foreach( $this->_Listeners as $EventName => $Listeners )
 		{
