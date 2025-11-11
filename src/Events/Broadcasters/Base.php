@@ -2,6 +2,7 @@
 
 namespace Neuron\Events\Broadcasters;
 
+use Neuron\Events\IEvent;
 use Neuron\Events\IListener;
 
 /**
@@ -15,6 +16,7 @@ abstract class Base implements IBroadcaster
 	 * Maps a listener class nome or object to an event name.
 	 * @param string $EventName
 	 * @param mixed $Listener IListener|string $Listener
+	 * @return bool
 	 */
 	public function addListener( string $EventName, mixed $Listener ) : bool
 	{
@@ -27,5 +29,9 @@ abstract class Base implements IBroadcaster
 		return true;
 	}
 
-	abstract public function broadcast( $Event ) : void;
+	/**
+	 * Broadcasts an event to all registered listeners.
+	 * @param IEvent $Event
+	 */
+	abstract public function broadcast( IEvent $Event ) : void;
 }

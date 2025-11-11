@@ -1,6 +1,7 @@
+## 0.6.10 2025-11-11
+* Added additional type hints and return types.
+
 ## 0.6.9 2025-05-21
-
-
 ## 0.6.8
 * Updated tests to 100% coverage.
 
