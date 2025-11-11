@@ -7,5 +7,5 @@ namespace Neuron\Events;
  */
 interface IListener
 {
-	public function event( $Event );
+	public function event( IEvent $Event );
 }
