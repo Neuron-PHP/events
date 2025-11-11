@@ -10,6 +10,6 @@ use Neuron\Events\IListener;
  */
 interface IBroadcaster
 {
-	public function addListener( string $EventName, IListener $Listener ) : bool;
-	public function broadcast( IEvent $Event ) : void;
+	public function addListener( string $eventName, IListener $listener ) : bool;
+	public function broadcast( IEvent $event ) : void;
 }

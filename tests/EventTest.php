@@ -5,5 +5,5 @@ use Neuron\Events\IEvent;
 
 class EventTest implements IEvent
 {
-	public int $State = 0;
+	public int $state = 0;
 }

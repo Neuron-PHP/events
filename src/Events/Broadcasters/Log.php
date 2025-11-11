@@ -13,24 +13,24 @@ use Neuron\Log\ILogger;
  */
 class Log extends Base
 {
-	private ILogger $_Logger;
+	private ILogger $_logger;
 
 	/**
-	 * @param ILogger $Logger
+	 * @param ILogger $logger
 	 */
-	function __construct( ILogger $Logger )
+	function __construct( ILogger $logger )
 	{
-		$this->_Logger = $Logger;
+		$this->_logger = $logger;
 	}
 
 	/**
 	 * Writes the name of the broadcast event to the configured log.
 	 *
-	 * @param $Event
+	 * @param $event
 	 * @return void
 	 */
-	public function broadcast( $Event ) : void
+	public function broadcast( $event ) : void
 	{
-		$this->_Logger->info( get_class( $Event ) );
+		$this->_logger->info( get_class( $event ) );
 	}
 }

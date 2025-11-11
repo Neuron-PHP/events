@@ -14,22 +14,22 @@ class Generic extends Base
 {
 	/**
 	 * Broadcasts an event to all listeners registered to the event class.
-	 * @param IEvent $Event
+	 * @param IEvent $event
 	 */
-	public function broadcast( IEvent $Event ) : void
+	public function broadcast( IEvent $event ) : void
 	{
-		foreach( $this->_Listeners as $EventName => $Listeners )
+		foreach( $this->_listeners as $eventName => $listeners )
 		{
-			if( get_class( $Event ) == $EventName )
+			if( get_class( $event ) == $eventName )
 			{
-				foreach( $Listeners as $Listener )
+				foreach( $listeners as $listener )
 				{
-					if( is_string( $Listener ) )
+					if( is_string( $listener ) )
 					{
-						$Listener = new $Listener();
+						$listener = new $listener();
 					}
 
-					$Listener->event( $Event );
+					$listener->event( $event );
 				}
 			}
 		}

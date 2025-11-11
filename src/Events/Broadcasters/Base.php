@@ -10,28 +10,28 @@ use Neuron\Events\IListener;
  */
 abstract class Base implements IBroadcaster
 {
-	protected array $_Listeners = [];
+	protected array $_listeners = [];
 
 	/**
 	 * Maps a listener class nome or object to an event name.
-	 * @param string $EventName
-	 * @param mixed $Listener IListener|string $Listener
+	 * @param string $eventName
+	 * @param mixed $listener IListener|string $listener
 	 * @return bool
 	 */
-	public function addListener( string $EventName, mixed $Listener ) : bool
+	public function addListener( string $eventName, mixed $listener ) : bool
 	{
-		if( array_key_exists( $EventName, $this->_Listeners ) )
+		if( array_key_exists( $eventName, $this->_listeners ) )
 		{
 			return false;
 		}
 
-		$this->_Listeners[ $EventName ][] = $Listener;
+		$this->_listeners[ $eventName ][] = $listener;
 		return true;
 	}
 
 	/**
 	 * Broadcasts an event to all registered listeners.
-	 * @param IEvent $Event
+	 * @param IEvent $event
 	 */
-	abstract public function broadcast( IEvent $Event ) : void;
+	abstract public function broadcast( IEvent $event ) : void;
 }

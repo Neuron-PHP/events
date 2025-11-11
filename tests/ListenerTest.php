@@ -5,8 +5,8 @@ use Neuron\Events\IListener;
 
 class ListenerTest implements IListener
 {
-	public function event( $Event )
+	public function event( $event )
 	{
-		$Event->State += 1;
+		$event->state += 1;
 	}
 }

@@ -13,30 +13,30 @@ class EmitterTest extends TestCase
 
 	public function testGetBroadcasters()
 	{
-		$Emitter     = new Emitter();
-		$Broadcaster = new Generic();
+		$emitter     = new Emitter();
+		$broadcaster = new Generic();
 
-		$Emitter->registerBroadcaster( $Broadcaster );
+		$emitter->registerBroadcaster( $broadcaster );
 
-		$Broadcasters = $Emitter->getBroadcasters();
+		$broadcasters = $emitter->getBroadcasters();
 
-		$this->assertEquals( 1, count( $Broadcasters ) );
+		$this->assertEquals( 1, count( $broadcasters ) );
 	}
 
 	public function testAddListener()
 	{
-		$Emitter = new Emitter();
+		$emitter = new Emitter();
 
-		$Listener = new ListenerTest();
+		$listener = new ListenerTest();
 
-		$this->assertFalse( $Emitter->addListener( EventTest::class, $Listener ) );
+		$this->assertFalse( $emitter->addListener( EventTest::class, $listener ) );
 
-		$Broadcaster = new Generic();
+		$broadcaster = new Generic();
 
-		$Emitter->registerBroadcaster( $Broadcaster );
+		$emitter->registerBroadcaster( $broadcaster );
 
-		$Emitter->addListener( EventTest::class, $Listener );
+		$emitter->addListener( EventTest::class, $listener );
 
-		$this->assertFalse( $Emitter->addListener( EventTest::class, $Listener ) );
+		$this->assertFalse( $emitter->addListener( EventTest::class, $listener ) );
 	}
 }
