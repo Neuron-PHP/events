@@ -47,7 +47,7 @@ use Neuron\Events\Broadcasters\IBroadcaster;
  */
 class Emitter
 {
-	private array $_Broadcasters = [];
+	private array $_broadcasters = [];
 
 	/**
 	 * Returns a list of all registered broadcasters.
@@ -56,65 +56,65 @@ class Emitter
 	 */
 	public function getBroadcasters(): array
 	{
-		return $this->_Broadcasters;
+		return $this->_broadcasters;
 	}
 
 	/**
 	 * Emits an event across all registered broadcasters.
 	 *
-	 * @param $Event
+	 * @param $event
 	 */
-	public function emit( $Event ): void
+	public function emit( $event ): void
 	{
-		foreach( $this->_Broadcasters as $Broadcaster )
+		foreach( $this->_broadcasters as $broadcaster )
 		{
-			$Broadcaster->broadcast( $Event );
+			$broadcaster->broadcast( $event );
 		}
 	}
 
 	/**
 	 * Registers a broadcaster to emit events to.
 	 *
-	 * @param IBroadcaster $NewBroadcaster
+	 * @param IBroadcaster $newBroadcaster
 	 * @return bool
 	 */
-	public function registerBroadcaster( IBroadcaster $NewBroadcaster ) : bool
+	public function registerBroadcaster( IBroadcaster $newBroadcaster ) : bool
 	{
-		foreach( $this->_Broadcasters as $Broadcaster)
+		foreach( $this->_broadcasters as $broadcaster)
 		{
-			if( $Broadcaster === $NewBroadcaster )
+			if( $broadcaster === $newBroadcaster )
 			{
 				return false;
 			}
 		}
 
-		$this->_Broadcasters[] = $NewBroadcaster;
+		$this->_broadcasters[] = $newBroadcaster;
 		return true;
 	}
 
 	/**
 	 * Registers an event with all broadcasters.
 	 *
-	 * @param string $EventName
-	 * @param IListener $Listener
+	 * @param string $eventName
+	 * @param IListener $listener
 	 * @return bool
 	 */
-	public function addListener( string $EventName, IListener $Listener ) : bool
+	public function addListener( string $eventName, IListener $listener ) : bool
 	{
-		if( !count( $this->_Broadcasters ) )
+		if( !count( $this->_broadcasters ) )
 		{
 			return false;
 		}
 
-		$Result = true;
-		foreach( $this->_Broadcasters as $Broadcaster )
+		$result = true;
+		foreach( $this->_broadcasters as $broadcaster )
 		{
-			if( $Broadcaster->addListener( $EventName, $Listener ) === false )
+			if( $broadcaster->addListener( $eventName, $listener ) === false )
 			{
-				$Result = false;
+				$result = false;
 			}
 		}
 
-		return $Result;
+		return $result;
 	}
 }

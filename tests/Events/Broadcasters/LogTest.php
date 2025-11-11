@@ -17,20 +17,20 @@ class LogTest extends TestCase
 	 */
 	public function testBroadcaster()
 	{
-		$Memory      = new Memory( new Raw() );
-		$Logger      = new Logger( $Memory );
-		$Broadcaster = new Log( $Logger );
-		$Emitter     = new Emitter();
-		$Event       = new \Tests\EventTest();
+		$memory      = new Memory( new Raw() );
+		$logger      = new Logger( $memory );
+		$broadcaster = new Log( $logger );
+		$emitter     = new Emitter();
+		$event       = new \Tests\EventTest();
 
-		$Logger->setRunLevel( 'debug' );
-		$Emitter->registerBroadcaster( $Broadcaster );
+		$logger->setRunLevel( 'debug' );
+		$emitter->registerBroadcaster( $broadcaster );
 
-		$Emitter->emit( $Event );
+		$emitter->emit( $event );
 
 		$this->assertEquals(
 			"Tests\EventTest\n",
-			$Memory->getData()
+			$memory->getData()
 		);
 	}
 }

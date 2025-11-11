@@ -12,95 +12,95 @@ class GenericTest extends TestCase
 {
 	public function testBroadcasterWithObject()
 	{
-		$Emitter     = new Emitter();
-		$Broadcaster = new Generic();
-		$Listener    = new ListenerTest();
-		$Event       = new EventTest();
+		$emitter     = new Emitter();
+		$broadcaster = new Generic();
+		$listener    = new ListenerTest();
+		$event       = new EventTest();
 
-		$Emitter->registerBroadcaster( $Broadcaster );
+		$emitter->registerBroadcaster( $broadcaster );
 
-		$Broadcaster->addListener( EventTest::class, $Listener );
+		$broadcaster->addListener( EventTest::class, $listener );
 
-		$Emitter->emit( $Event );
+		$emitter->emit( $event );
 
 		$this->assertEquals(
 			1,
-			$Event->State
+			$event->state
 		);
 	}
 
 	public function testBroadcasterWithClass()
 	{
-		$Broadcaster = new Generic();
-		$Emitter     = new Emitter();
-		$Event       = new EventTest();
+		$broadcaster = new Generic();
+		$emitter     = new Emitter();
+		$event       = new EventTest();
 
-		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
+		$broadcaster->addListener( EventTest::class, ListenerTest::class );
 
-		$Emitter->registerBroadcaster( $Broadcaster );
+		$emitter->registerBroadcaster( $broadcaster );
 
-		$Emitter->emit( $Event );
+		$emitter->emit( $event );
 
 		$this->assertEquals(
 			1,
-			$Event->State
+			$event->state
 		);
 	}
 
 	public function testRegisterWithEmitter()
 	{
-		$Emitter     = new Emitter();
-		$Broadcaster = new Generic();
-		$Listener    = new ListenerTest();
-		$Event       = new EventTest();
+		$emitter     = new Emitter();
+		$broadcaster = new Generic();
+		$listener    = new ListenerTest();
+		$event       = new EventTest();
 
-		$Emitter->registerBroadcaster( $Broadcaster );
+		$emitter->registerBroadcaster( $broadcaster );
 
-		$Emitter->addListener( EventTest::class, $Listener );
+		$emitter->addListener( EventTest::class, $listener );
 
-		$Emitter->emit( $Event );
+		$emitter->emit( $event );
 
 		$this->assertEquals(
 			1,
-			$Event->State
+			$event->state
 		);
 	}
 
 	public function testDuplicateBroadcasters()
 	{
-		$Broadcaster = new Generic();
-		$Emitter     = new Emitter();
-		$Event       = new EventTest();
+		$broadcaster = new Generic();
+		$emitter     = new Emitter();
+		$event       = new EventTest();
 
-		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
+		$broadcaster->addListener( EventTest::class, ListenerTest::class );
 
-		$Emitter->registerBroadcaster( $Broadcaster );
-		$Emitter->registerBroadcaster( $Broadcaster );
+		$emitter->registerBroadcaster( $broadcaster );
+		$emitter->registerBroadcaster( $broadcaster );
 
-		$Emitter->emit( $Event );
+		$emitter->emit( $event );
 
 		$this->assertEquals(
 			1,
-			$Event->State
+			$event->state
 		);
 	}
 
 	public function testDuplicateListeners()
 	{
-		$Broadcaster = new Generic();
-		$Emitter     = new Emitter();
-		$Event       = new EventTest();
+		$broadcaster = new Generic();
+		$emitter     = new Emitter();
+		$event       = new EventTest();
 
-		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
-		$Broadcaster->addListener( EventTest::class, ListenerTest::class );
+		$broadcaster->addListener( EventTest::class, ListenerTest::class );
+		$broadcaster->addListener( EventTest::class, ListenerTest::class );
 
-		$Emitter->registerBroadcaster( $Broadcaster );
+		$emitter->registerBroadcaster( $broadcaster );
 
-		$Emitter->emit( $Event );
+		$emitter->emit( $event );
 
 		$this->assertEquals(
 			1,
-			$Event->State
+			$event->state
 		);
 	}
 }
