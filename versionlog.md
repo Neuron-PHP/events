@@ -1,3 +1,5 @@
+## 0.6.11
+
 ## 0.6.10 2025-11-11
 * Added additional type hints and return types.
 
