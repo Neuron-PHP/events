@@ -18,7 +18,7 @@ class Generic extends Base
 	 */
 	public function broadcast( IEvent $event ) : void
 	{
-		foreach( $this->_listeners as $eventName => $listeners )
+		foreach( $this->listeners as $eventName => $listeners )
 		{
 			if( get_class( $event ) == $eventName )
 			{
