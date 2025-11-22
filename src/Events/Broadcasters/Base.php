@@ -10,7 +10,7 @@ use Neuron\Events\IListener;
  */
 abstract class Base implements IBroadcaster
 {
-	protected array $_listeners = [];
+	protected array $listeners = [];
 
 	/**
 	 * Maps a listener class nome or object to an event name.
@@ -20,12 +20,12 @@ abstract class Base implements IBroadcaster
 	 */
 	public function addListener( string $eventName, mixed $listener ) : bool
 	{
-		if( array_key_exists( $eventName, $this->_listeners ) )
+		if( array_key_exists( $eventName, $this->listeners ) )
 		{
 			return false;
 		}
 
-		$this->_listeners[ $eventName ][] = $listener;
+		$this->listeners[ $eventName ][] = $listener;
 		return true;
 	}
 

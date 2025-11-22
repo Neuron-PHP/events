@@ -1,4 +1,5 @@
 ## 0.6.12
+* Adds scaffolding commands.
 
 ## 0.6.11 2025-11-11
 

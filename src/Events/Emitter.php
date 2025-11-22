@@ -47,7 +47,7 @@ use Neuron\Events\Broadcasters\IBroadcaster;
  */
 class Emitter
 {
-	private array $_broadcasters = [];
+	private array $broadcasters = [];
 
 	/**
 	 * Returns a list of all registered broadcasters.
@@ -56,7 +56,7 @@ class Emitter
 	 */
 	public function getBroadcasters(): array
 	{
-		return $this->_broadcasters;
+		return $this->broadcasters;
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Emitter
 	 */
 	public function emit( $event ): void
 	{
-		foreach( $this->_broadcasters as $broadcaster )
+		foreach( $this->broadcasters as $broadcaster )
 		{
 			$broadcaster->broadcast( $event );
 		}
@@ -80,7 +80,7 @@ class Emitter
 	 */
 	public function registerBroadcaster( IBroadcaster $newBroadcaster ) : bool
 	{
-		foreach( $this->_broadcasters as $broadcaster)
+		foreach( $this->broadcasters as $broadcaster)
 		{
 			if( $broadcaster === $newBroadcaster )
 			{
@@ -88,7 +88,7 @@ class Emitter
 			}
 		}
 
-		$this->_broadcasters[] = $newBroadcaster;
+		$this->broadcasters[] = $newBroadcaster;
 		return true;
 	}
 
@@ -101,13 +101,13 @@ class Emitter
 	 */
 	public function addListener( string $eventName, IListener $listener ) : bool
 	{
-		if( !count( $this->_broadcasters ) )
+		if( !count( $this->broadcasters ) )
 		{
 			return false;
 		}
 
 		$result = true;
-		foreach( $this->_broadcasters as $broadcaster )
+		foreach( $this->broadcasters as $broadcaster )
 		{
 			if( $broadcaster->addListener( $eventName, $listener ) === false )
 			{

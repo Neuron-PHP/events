@@ -13,14 +13,26 @@ use Neuron\Log\ILogger;
  */
 class Log extends Base
 {
-	private ILogger $_logger;
+	private ILogger $logger;
 
 	/**
 	 * @param ILogger $logger
 	 */
 	function __construct( ILogger $logger )
 	{
-		$this->_logger = $logger;
+		$this->setLogger( $logger );
+	}
+
+	/**
+	 * Sets the logger to use.
+	 *
+	 * @param ILogger $logger
+	 * @return self
+	 */
+	public function setLogger( ILogger $logger ) : self
+	{
+		$this->logger = $logger;
+		return $this;
 	}
 
 	/**
@@ -31,6 +43,6 @@ class Log extends Base
 	 */
 	public function broadcast( $event ) : void
 	{
-		$this->_logger->info( get_class( $event ) );
+		$this->logger->info( get_class( $event ) );
 	}
 }
