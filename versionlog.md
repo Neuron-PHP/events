@@ -1,3 +1,6 @@
+## 0.6.13 2025-11-24
+* Updated to logging 0.9
+
 ## 0.6.12 2025-11-22
 * Adds scaffolding commands.
 
