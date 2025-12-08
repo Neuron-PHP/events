@@ -1,4 +1,5 @@
 [![CI](https://github.com/Neuron-PHP/events/actions/workflows/ci.yml/badge.svg)](https://github.com/Neuron-PHP/events/actions)
+[![codecov](https://codecov.io/gh/Neuron-PHP/events/graph/badge.svg)](https://codecov.io/gh/Neuron-PHP/events)
 # Neuron-PHP Events
 
 A flexible event-driven programming component for PHP 8.4+ that provides a robust framework for managing events, listeners, and broadcasters with support for multiple broadcasting strategies.

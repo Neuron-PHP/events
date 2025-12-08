@@ -30,3 +30,5 @@ composer.phar
 cache.properties
 composer.lock
 .phpunit.result.cache
+
+coverage.xml
