@@ -3,7 +3,7 @@ namespace Tests;
 
 use Neuron\Events\IListener;
 
-class ListenerTest implements IListener
+class SampleListener implements IListener
 {
 	public function event( $event )
 	{
