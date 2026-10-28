@@ -4,7 +4,6 @@ namespace Tests\Events\Broadcasters;
 
 use Neuron\Events\Broadcasters\Log;
 use Neuron\Events\Emitter;
-use Neuron\Events\EventTest;
 use Neuron\Log\Destination\Memory;
 use Neuron\Log\Format\Raw;
 use Neuron\Log\Logger;
@@ -21,7 +20,7 @@ class LogTest extends TestCase
 		$logger      = new Logger( $memory );
 		$broadcaster = new Log( $logger );
 		$emitter     = new Emitter();
-		$event       = new \Tests\EventTest();
+		$event       = new \Tests\SampleEvent();
 
 		$logger->setRunLevel( 'debug' );
 		$emitter->registerBroadcaster( $broadcaster );
@@ -29,7 +28,7 @@ class LogTest extends TestCase
 		$emitter->emit( $event );
 
 		$this->assertEquals(
-			"Tests\EventTest\n",
+			"Tests\SampleEvent\n",
 			$memory->getData()
 		);
 	}

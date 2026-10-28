@@ -3,7 +3,7 @@ namespace Tests;
 
 use Neuron\Events\IEvent;
 
-class EventTest implements IEvent
+class SampleEvent implements IEvent
 {
 	public int $state = 0;
 }

@@ -5,8 +5,8 @@ namespace Tests\Events;
 use Neuron\Events\Broadcasters\Generic;
 use Neuron\Events\Emitter;
 use PHPUnit\Framework\TestCase;
-use Tests\EventTest;
-use Tests\ListenerTest;
+use Tests\SampleEvent;
+use Tests\SampleListener;
 
 class EmitterTest extends TestCase
 {
@@ -27,16 +27,16 @@ class EmitterTest extends TestCase
 	{
 		$emitter = new Emitter();
 
-		$listener = new ListenerTest();
+		$listener = new SampleListener();
 
-		$this->assertFalse( $emitter->addListener( EventTest::class, $listener ) );
+		$this->assertFalse( $emitter->addListener( SampleEvent::class, $listener ) );
 
 		$broadcaster = new Generic();
 
 		$emitter->registerBroadcaster( $broadcaster );
 
-		$emitter->addListener( EventTest::class, $listener );
+		$emitter->addListener( SampleEvent::class, $listener );
 
-		$this->assertFalse( $emitter->addListener( EventTest::class, $listener ) );
+		$this->assertFalse( $emitter->addListener( SampleEvent::class, $listener ) );
 	}
 }

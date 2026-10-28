@@ -5,8 +5,8 @@ namespace Tests\Events\Broadcasters;
 use Neuron\Events\Broadcasters\Generic;
 use Neuron\Events\Emitter;
 use PHPUnit\Framework\TestCase;
-use Tests\EventTest;
-use Tests\ListenerTest;
+use Tests\SampleEvent;
+use Tests\SampleListener;
 
 class GenericTest extends TestCase
 {
@@ -14,12 +14,12 @@ class GenericTest extends TestCase
 	{
 		$emitter     = new Emitter();
 		$broadcaster = new Generic();
-		$listener    = new ListenerTest();
-		$event       = new EventTest();
+		$listener    = new SampleListener();
+		$event       = new SampleEvent();
 
 		$emitter->registerBroadcaster( $broadcaster );
 
-		$broadcaster->addListener( EventTest::class, $listener );
+		$broadcaster->addListener( SampleEvent::class, $listener );
 
 		$emitter->emit( $event );
 
@@ -33,9 +33,9 @@ class GenericTest extends TestCase
 	{
 		$broadcaster = new Generic();
 		$emitter     = new Emitter();
-		$event       = new EventTest();
+		$event       = new SampleEvent();
 
-		$broadcaster->addListener( EventTest::class, ListenerTest::class );
+		$broadcaster->addListener( SampleEvent::class, SampleListener::class );
 
 		$emitter->registerBroadcaster( $broadcaster );
 
@@ -51,12 +51,12 @@ class GenericTest extends TestCase
 	{
 		$emitter     = new Emitter();
 		$broadcaster = new Generic();
-		$listener    = new ListenerTest();
-		$event       = new EventTest();
+		$listener    = new SampleListener();
+		$event       = new SampleEvent();
 
 		$emitter->registerBroadcaster( $broadcaster );
 
-		$emitter->addListener( EventTest::class, $listener );
+		$emitter->addListener( SampleEvent::class, $listener );
 
 		$emitter->emit( $event );
 
@@ -70,9 +70,9 @@ class GenericTest extends TestCase
 	{
 		$broadcaster = new Generic();
 		$emitter     = new Emitter();
-		$event       = new EventTest();
+		$event       = new SampleEvent();
 
-		$broadcaster->addListener( EventTest::class, ListenerTest::class );
+		$broadcaster->addListener( SampleEvent::class, SampleListener::class );
 
 		$emitter->registerBroadcaster( $broadcaster );
 		$emitter->registerBroadcaster( $broadcaster );
@@ -89,10 +89,10 @@ class GenericTest extends TestCase
 	{
 		$broadcaster = new Generic();
 		$emitter     = new Emitter();
-		$event       = new EventTest();
+		$event       = new SampleEvent();
 
-		$broadcaster->addListener( EventTest::class, ListenerTest::class );
-		$broadcaster->addListener( EventTest::class, ListenerTest::class );
+		$broadcaster->addListener( SampleEvent::class, SampleListener::class );
+		$broadcaster->addListener( SampleEvent::class, SampleListener::class );
 
 		$emitter->registerBroadcaster( $broadcaster );
 
@@ -112,15 +112,15 @@ class GenericTest extends TestCase
 	{
 		$broadcaster = new Generic();
 		$emitter     = new Emitter();
-		$event       = new EventTest();
+		$event       = new SampleEvent();
 		$calls       = [];
 
 		$first  = new RecordingListener( 'first', $calls );
 		$second = new RecordingListener( 'second', $calls );
 
-		$this->assertTrue( $broadcaster->addListener( EventTest::class, $first ) );
-		$this->assertTrue( $broadcaster->addListener( EventTest::class, $second ) );
-		$this->assertTrue( $broadcaster->addListener( EventTest::class, ListenerTest::class ) );
+		$this->assertTrue( $broadcaster->addListener( SampleEvent::class, $first ) );
+		$this->assertTrue( $broadcaster->addListener( SampleEvent::class, $second ) );
+		$this->assertTrue( $broadcaster->addListener( SampleEvent::class, SampleListener::class ) );
 
 		$emitter->registerBroadcaster( $broadcaster );
 
@@ -133,11 +133,11 @@ class GenericTest extends TestCase
 	public function testTheSameObjectIsRefusedButAnotherOfItsClassIsNot()
 	{
 		$broadcaster = new Generic();
-		$listener    = new ListenerTest();
+		$listener    = new SampleListener();
 
-		$this->assertTrue( $broadcaster->addListener( EventTest::class, $listener ) );
-		$this->assertFalse( $broadcaster->addListener( EventTest::class, $listener ) );
-		$this->assertTrue( $broadcaster->addListener( EventTest::class, new ListenerTest() ) );
+		$this->assertTrue( $broadcaster->addListener( SampleEvent::class, $listener ) );
+		$this->assertFalse( $broadcaster->addListener( SampleEvent::class, $listener ) );
+		$this->assertTrue( $broadcaster->addListener( SampleEvent::class, new SampleListener() ) );
 	}
 }
 
